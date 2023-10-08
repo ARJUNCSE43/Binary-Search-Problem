@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+#define ll long long
+
+using namespace std;
+int func(ll w,ll h,ll n,ll x)
+{
+    ll cnt=0;
+    ll r1=(x/w);
+    ll r2=(x/h);
+    cnt=r1*r2;
+    return cnt>=n;
+}
+int main()
+{
+//    int t;
+//    cin>>t;
+//    while(t--)
+    {
+        ll w,h,n;
+        cin>>w>>h>>n;
+        ll l=0,r=1;
+        while(func(w,h,n,r)==false)
+        {
+            r*=2;
+        }
+            while(l+1<r)
+            {
+                ll mid=(l+r)/2;
+                if(func(w,h,n,mid))
+                {
+                    r=mid;
+                }
+                else
+                {
+                    l=mid;
+                }
+            }
+           cout<<r<<endl;
+
+    }
+}
